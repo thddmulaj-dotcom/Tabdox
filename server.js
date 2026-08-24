@@ -37,7 +37,13 @@ function phoneNumber(v) {
   const d = String(v || "").replace(/\D/g,"");
   return d.startsWith("0") ? "243" + d.slice(1) : d;
 }
-
+app.get("/", (_, res) => {
+  res.json({
+    success: true,
+    app: "Tadbox",
+    status: "online"
+  });
+});
 app.get("/health", (_,res)=>res.json({ok:true}));
 
 app.post("/payments/airtel", async (req,res)=>{
